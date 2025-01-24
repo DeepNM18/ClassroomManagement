@@ -7,6 +7,8 @@
     header("Location:login.php");
     exit();
   }
+
+  $uid = $_SESSION['uid'];
   
 ?>
 
@@ -83,6 +85,49 @@
     </button>
 
   </div>
+
+
+  <div class="header-container">
+    <div class="classroom-name-container">
+
+    </div>
+
+    <button class="create-classroom">
+      <img class="plus-image" src="../resources/images/plus_white_v2.png" />
+      <div class="plus-text">Create<br>Classroom</div>
+    </button>
+
+    <button class="join-classroom">
+      <img class="join-image" src="../resources/images/login.png" />
+      <div class="join-text">Join a<br>Classroom</div>
+    </button>
+
+    <button class="profilepic-container">
+      <?php
+        $conn = mysqli_connect("localhost:3306","root","",$dbname);
+        if(!$conn)
+        {
+          die("Unable to connect to database");
+        }
+        $sql = "SELECT * FROM User WHERE UserId = {$uid}";
+        $result = mysqli_query($conn,$sql);
+
+        while($data = mysqli_fetch_array($result))
+        {
+          if($data['ProfilePicURL'] != "")
+          {
+            echo "<img class=\"profilepic\" src=\"{$data['ProfilePicURL']}\" />";
+          }
+          else
+          {
+            echo "<img class=\"profilepic\" src=\"../resources/profilepics/default-profile-pic.png\" />";
+          }
+        }
+      ?>
+    </button>
+  </div>
+
+
 </body>
 
 </html>
