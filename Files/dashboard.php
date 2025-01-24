@@ -9,6 +9,7 @@
   }
 
   $uid = $_SESSION['uid'];
+  $classroomName = "";
   
 ?>
 
@@ -21,6 +22,7 @@
   <title>Document</title>
 
   <link rel="stylesheet" href="../Styles/dashboard.css?v=<?php echo time(); ?>" />
+  <link rel="stylesheet" href="../Styles/joinedClassrooms.css?v=<?php echo time(); ?>" />
 
 </head>
 
@@ -79,17 +81,26 @@
 
     </div>
 
-    <button class="logout-button">
+    <button class="logout-button" id="logout-button">
       <img src="../resources/images/logout_white.png">
       <div>Logout</div>
     </button>
+
+    <script>
+    var logoutButton = document.getElementById('logout-button');
+    logoutButton.addEventListener('click', function() {
+      window.location.href = "logout.php";
+    });
+    </script>
 
   </div>
 
 
   <div class="header-container">
     <div class="classroom-name-container">
-
+      <?php
+        echo $classroomName;
+      ?>
     </div>
 
     <button class="create-classroom">
@@ -126,8 +137,3 @@
       ?>
     </button>
   </div>
-
-
-</body>
-
-</html>

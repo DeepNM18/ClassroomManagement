@@ -81,7 +81,7 @@
           $uid = $data['UserId'];
           $_SESSION['uid'] = $uid;
           // echo $uid;
-          header("Location:dashboard.php");
+          header("Location:joinedClassrooms.php");
           exit();
         }
       }
