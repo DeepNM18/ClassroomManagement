@@ -16,6 +16,7 @@ html,body{
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 400px;
 }
 
 .dashboard-title{
@@ -158,4 +159,87 @@ html,body{
 
 .logout-button img{
   width: 30px;
+}
+
+
+
+.header-container{
+  position: fixed;
+  top:15px;
+  right: 15px;
+  left:330px;
+  height:70px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px black;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 15px;
+}
+
+.classroom-name-container{
+  flex:1;
+}
+
+.create-classroom{
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  column-gap: 10px;
+  cursor: pointer;
+}
+
+.plus-image{
+  width:20px;
+}
+
+.plus-text{
+  font-size: 15px;
+}
+
+.join-classroom{
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  column-gap: 10px;
+  cursor: pointer;
+}
+
+.join-image{
+  width:25px;
+}
+
+.join-text{
+  font-size: 15px;
+}
+
+.profilepic-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+  border-radius: 50%;
+  /* border: 2px solid black; */
+  padding: 3px;
+  box-shadow: 0px 0px 5px black;
+}
+
+.profilepic{
+  width:45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* border: 2px solid black; */
 }
