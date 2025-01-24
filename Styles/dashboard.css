@@ -176,10 +176,18 @@ html,body{
   align-items: center;
   justify-content: center;
   column-gap: 15px;
+  min-width: 600px;
 }
 
 .classroom-name-container{
   flex:1;
+  font-size: 25px;
+  margin-left: 20px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 700;
 }
 
 .create-classroom{
