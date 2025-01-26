@@ -102,7 +102,7 @@ html,body{
   border: none;
   cursor: pointer;
   padding: 10px;
-  transition: background-color 0.3s;
+  transition: background-color 0.1s;
   border-radius: 10px;
 }
 
@@ -114,7 +114,9 @@ html,body{
   width:40px;
   height: 40px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit:cover;
+  object-position: left center;
+  box-shadow: 0px 0px 5px black;
 }
 
 .mini-classroom-details{
@@ -145,12 +147,18 @@ html,body{
   align-items: center;
   border-radius: 10px;
   border: none;
-  background-color: #171717;
+  background-color: #ef4444;
   color: white;
   cursor: pointer;
   padding: 10px;
   margin-bottom: 10px;
   width:90%;
+  transition: background-color 0.35s;
+  box-shadow: 0px 0px 5px black;
+  font-weight: 700;
+}
+.logout-button:hover{
+  background-color: #b33434;
 }
 
 .logout-button div{
@@ -193,13 +201,19 @@ html,body{
 .create-classroom{
   display: flex;
   align-items: center;
-  background-color: black;
+  background-color: #3b82f6;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 30px;
   column-gap: 10px;
   cursor: pointer;
+  transition: background-color 0.35s;
+  box-shadow: 0px 0px 5px black;
+  font-weight: 700;
+}
+.create-classroom:hover{
+  background-color: #1f56cd;
 }
 
 .plus-image{
@@ -213,13 +227,19 @@ html,body{
 .join-classroom{
   display: flex;
   align-items: center;
-  background-color: black;
+  background-color: #10b981;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 30px;
   column-gap: 10px;
   cursor: pointer;
+  transition: background-color 0.35s;
+  box-shadow: 0px 0px 5px black;
+  font-weight: 700;
+}
+.join-classroom:hover{
+  background-color: #0a7652;
 }
 
 .join-image{
