@@ -50,7 +50,7 @@
       <div class="mini-classrooms">
 
         <div class="mini-classroom-container">
-          <img src="../resources/Banners/banner1.jpg" class="mini-classroom-banner" />
+          <img src="../resources/Banners/banner5.jpg" class="mini-classroom-banner" />
           <div class="mini-classroom-details" id="c101">
             <div class="mini-classroom-title">B.Sc. IT Sem 6</div>
             <div class="mini-classroom-desc">This classroom is of batch 2024-25 of department of ICT</div>
@@ -64,7 +64,7 @@
         </div>
 
         <div class="mini-classroom-container">
-          <img src="../resources/Banners/banner1.jpg" class="mini-classroom-banner" />
+          <img src="../resources/Banners/banner6.jpg" class="mini-classroom-banner" />
           <div class="mini-classroom-details" id="c102">
             <div class="mini-classroom-title">B.Sc. IT Sem 6</div>
             <div class="mini-classroom-desc">This classroom is of batch 2024-25 of department of ICT</div>
@@ -105,7 +105,7 @@
 
     <button class="create-classroom">
       <img class="plus-image" src="../resources/images/plus_white_v2.png" />
-      <div class="plus-text">Create<br>Classroom</div>
+      <div class="plus-text">Create a<br>Classroom</div>
     </button>
 
     <button class="join-classroom">
