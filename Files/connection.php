@@ -42,8 +42,48 @@
 
   $sql = "CREATE TABLE IF NOT EXISTS ClassroomCodes(
     CodeId INT AUTO_INCREMENT PRIMARY KEY,
-    
+    JoiningCode VARCHAR(10) UNIQUE,
+    Role VARCHAR(100)
   )";
+
+  if(!mysqli_query($conn,$sql))
+  {
+    die("Unable to create ClassroomCodes table");
+  }
+
+  $sql = "CREATE TABLE IF NOT EXISTS ClassroomMst(
+    ClassroomId INT AUTO_INCREMENT PRIMARY KEY,
+    ClassroomName VARCHAR(150),
+    ClassroomDesc VARCHAR(250),
+    CreatedDate DATE,
+    UserId INT,
+    StudentJoiningCodeId INT,
+    TeacherJoiningCodeId INT,
+    BannerURL VARCHAR(250),
+    FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE SET NULL,
+    FOREIGN KEY (StudentJoiningCodeId) REFERENCES ClassroomCodes(CodeId) ON DELETE SET NULL,
+    FOREIGN KEY (TeacherJoiningCodeId) REFERENCES ClassroomCodes(CodeId) ON DELETE SET NULL
+  )";
+
+  if(!mysqli_query($conn,$sql))
+  {
+    die("Unable to create Classroom table");
+  }
+
+  $sql = "CREATE TABLE IF NOT EXISTS ClassroomUser(
+    CUId INT AUTO_INCREMENT PRIMARY KEY,
+    UserId INT,
+    ClassroomId INT,
+    Role VARCHAR(100),
+    JoiningDate DATE,
+    FOREIGN KEY (UserId) REFERENCES User(UserId) ON DELETE SET NULL,
+    FOREIGN KEY (ClassroomId) REFERENCES ClassroomMst(ClassroomId) ON DELETE SET NULL
+  )";
+
+  if(!mysqli_query($conn,$sql))
+  {
+    die("Unable to create ClassroomUser table");
+  }
   
   $conn->close();
 

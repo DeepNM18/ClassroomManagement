@@ -78,10 +78,10 @@
       {
         if($data['Email'] === $email && $data['Password'] === $password)
         {
+          $sk = rand(1000,9999);
           $uid = $data['UserId'];
-          $_SESSION['uid'] = $uid;
-          // echo $uid;
-          header("Location:joinedClassrooms.php");
+          $_SESSION['uid'][$sk] = $uid;
+          header("Location:joinedClassrooms.php?sk=$sk");
           exit();
         }
       }

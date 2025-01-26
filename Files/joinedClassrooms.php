@@ -1,5 +1,21 @@
 <?php
-  include 'dashboard.php';
+
+  session_start();
+
+  if(!isset($_SESSION['uid'][$_GET['sk']]))
+  {
+    header("Location:login.php");
+    exit();
+  }
+
+  $uid=0;
+
+  $sk = $_GET['sk'];
+  $uid = $_SESSION['uid'][$sk];
+
+  session_write_close();
+
+  include('dashboard.php');
 ?>
 
 <div class="main-container1">

@@ -2,13 +2,14 @@
   include("connection.php");
   session_start();
   // echo $_SESSION['uid'];
-  if(!isset($_SESSION['uid']))
-  {
-    header("Location:login.php");
-    exit();
-  }
+  
+  // if(!isset($_SESSION['uid'][$_GET['sk']]))
+  // {
+  //   header("Location:login.php");
+  //   exit();
+  // }
+  // $uid = $_SESSION['uid'][$_GET['sk']];
 
-  $uid = $_SESSION['uid'];
   $classroomName = "";
   
 ?>
@@ -34,11 +35,17 @@
     </div>
 
     <div class="sidebar-home">
-      <button class="home-button">
+      <button class="home-button" onclick="homeRedirect()">
         <img src="../resources/images/icons8-home-30.png">
         <div>Home</div>
       </button>
     </div>
+
+    <script>
+    function homeRedirect() {
+      window.location.href = "joinedClassrooms.php?sk=" + <?php echo $sk ?>;
+    }
+    </script>
 
     <div class="sidebar-classroom">
 
@@ -89,7 +96,7 @@
     <script>
     var logoutButton = document.getElementById('logout-button');
     logoutButton.addEventListener('click', function() {
-      window.location.href = "logout.php";
+      window.location.href = "logout.php?sk=" + <?php echo $sk; ?>;
     });
     </script>
 
@@ -103,7 +110,7 @@
       ?>
     </div>
 
-    <button class="create-classroom">
+    <button class="create-classroom" onclick="createClassroom()">
       <img class="plus-image" src="../resources/images/plus_white_v2.png" />
       <div class="plus-text">Create a<br>Classroom</div>
     </button>
@@ -112,6 +119,12 @@
       <img class="join-image" src="../resources/images/login.png" />
       <div class="join-text">Join a<br>Classroom</div>
     </button>
+
+    <script>
+    function createClassroom() {
+      window.location.href = "createClassroom.php?sk=" + <?php echo $sk; ?>;
+    }
+    </script>
 
     <button class="profilepic-container">
       <?php
