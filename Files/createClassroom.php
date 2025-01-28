@@ -82,7 +82,7 @@
             $sql = "INSERT INTO ClassroomUser (UserId,ClassroomId,Role,JoiningDate) VALUES ({$uid},{$cid},'Teacher',SYSDATE())";
             if(mysqli_query($conn,$sql))
             {
-              // $_SESSION['classroom'][$sk] = $cid;
+              $_SESSION['classroom'][$sk] = $cid;
               header("Location:classroom.php?sk=".$sk);
               exit();
             }

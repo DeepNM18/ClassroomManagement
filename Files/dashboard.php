@@ -115,7 +115,7 @@
       <div class="plus-text">Create a<br>Classroom</div>
     </button>
 
-    <button class="join-classroom">
+    <button class="join-classroom" onclick="joinClassroom()">
       <img class="join-image" src="../resources/images/login.png" />
       <div class="join-text">Join a<br>Classroom</div>
     </button>
@@ -124,9 +124,28 @@
     function createClassroom() {
       window.location.href = "createClassroom.php?sk=" + <?php echo $sk; ?>;
     }
+
+    function joinClassroom() {
+      window.location.href = "joinClassroom.php?sk=" + <?php echo $sk; ?>;
+    }
     </script>
 
-    <button class="profilepic-container">
+    <button class="profilepic-container" id="profile-btn">
+      <?php
+        $conn = mysqli_connect("localhost:3306", "root", "", $dbname);
+        if (!$conn) {
+            die("Unable to connect to database");
+        }
+        $sql = "SELECT * FROM User WHERE UserId = {$uid}";
+        $result = mysqli_query($conn, $sql);
+        $data = mysqli_fetch_array($result);
+
+        $profilePic = $data['ProfilePicURL'] ?: "../resources/profilepics/default-profile-pic.png";
+        echo "<img class=\"profilepic\" src=\"$profilePic\" />";
+    ?>
+    </button>
+
+    <div class="user-info-container">
       <?php
         $conn = mysqli_connect("localhost:3306","root","",$dbname);
         if(!$conn)
@@ -138,15 +157,42 @@
 
         while($data = mysqli_fetch_array($result))
         {
-          if($data['ProfilePicURL'] != "")
-          {
-            echo "<img class=\"profilepic\" src=\"{$data['ProfilePicURL']}\" />";
-          }
-          else
-          {
-            echo "<img class=\"profilepic\" src=\"../resources/profilepics/default-profile-pic.png\" />";
-          }
+          $pfname = $data['FullName'];
+          $pemail = $data['Email'];
+          $pdob = $data['DOB'];
+          $pimage = $data['ProfilePicURL'];
+          $pgender = $data['Gender'];
+          $pcdate = $data['CreateDate'];
+          echo "
+            <div class=\"user-info\" id=\"userInfo\">
+              <img src=\"$pimage\" alt=\"User Avatar\" class=\"user-avatar\">
+              <h3>$pfname</h3>
+              <p><i class=\"fas fa-envelope\"></i> $pemail</p>
+              <p><i class=\"fas fa-calendar-alt\"></i> Date Of Birth : $pdob</p>
+              <p><i class=\"fas fa-envelope\"></i> Gender : $pgender</p>
+              <p><i class=\"fas fa-calendar-alt\"></i> Signup Date : $pcdate</p>
+              <a href=\"editProfile.php?sk=$sk\" class=\"edit-profile-btn\">Edit Profile</a>
+            </div>
+
+            <script>
+              const profilePic = document.getElementById(\"profile-btn\");
+              const userInfo = document.getElementById(\"userInfo\");
+
+              // Toggle user info with animation
+              profilePic.addEventListener(\"click\", (event) => {
+                  event.stopPropagation();
+                  userInfo.classList.toggle(\"show\");
+              });
+
+              // Hide when clicking outside
+              document.addEventListener(\"click\", (event) => {
+                  if (!userInfo.contains(event.target) && event.target !== profilePic) {
+                      userInfo.classList.remove(\"show\");
+                  }
+              });
+            </script>
+          ";
         }
       ?>
-    </button>
+    </div>
   </div>
