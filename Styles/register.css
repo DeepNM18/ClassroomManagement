@@ -73,6 +73,7 @@ html,body{
   padding: 12px 15px;
   margin-top: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  border:2px solid transparent;
 }
 
 .email-tag:focus,
